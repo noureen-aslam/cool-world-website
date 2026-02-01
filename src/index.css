@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  #root {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  #root::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #000428, #004e92, #00d2ff, #004e92, #000428);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    z-index: -2;
+  }
+
+  #root::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(0, 210, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(0, 78, 146, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(0, 210, 255, 0.05) 0%, transparent 50%);
+    z-index: -1;
+    animation: patternMove 20s ease-in-out infinite;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes patternMove {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
+
+  input[type="date"],
+  input[type="time"] {
+    color-scheme: dark;
+  }
+
+  select option {
+    background-color: #1a1a2e;
+    color: white;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: rgba(0, 4, 40, 0.3);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: rgba(0, 210, 255, 0.3);
+    border-radius: 5px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 210, 255, 0.5);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
